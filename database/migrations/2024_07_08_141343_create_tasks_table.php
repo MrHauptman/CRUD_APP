@@ -13,10 +13,10 @@ return new class extends Migration
         {
             Schema::create('tasks', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('user_id');
+                $table->foreignId('user_id')->nullable();
                 $table->string('name');
                 $table->text('description')->nullable();
-                $table->dateTimeTz('opened_at');
+                $table->dateTimeTz('opened_at')->nullable();
                 $table->dateTimeTz('deadline')->nullable(); 
                 $table->dateTimeTz('finished_at')->nullable();
                 $table->string('status')->default('in process');
