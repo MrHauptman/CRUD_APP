@@ -11,8 +11,8 @@
 <body class="bg-gray-100 p-4">
 <div class="max-w-md mx-auto bg-white p-8 rounded shadow-md">
     <h2 class="text-2xl font-semibold mb-4">Task was completed!</h2>
-    <p class="mb-4">Dear {{ $name }},</p>
-    <p>Ёр таск {{ task.name }} уос саксесфулли комплитед.</p>
+    <p class="mb-4">Dear ,</p>
+    <p>Ёр таск уос саксесфулли комплитед.</p>
     <p class="mt-4">Регадрс,<br>Студент визаут слип</p>
 </div>
 </body>

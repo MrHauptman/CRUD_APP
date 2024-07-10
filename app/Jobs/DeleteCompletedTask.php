@@ -8,7 +8,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Task;
-
+use Illuminate\Support\Facades\Log;
 class DeleteCompletedTask implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -34,6 +34,8 @@ class DeleteCompletedTask implements ShouldQueue
 //   }
     public function handle(Task $task)
     {  
+        Log::debug('Job started');
         $this->$task->delete();
+        Log::debug('Job finished');
     }
 }

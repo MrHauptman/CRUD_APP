@@ -8,7 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TaskCompletedEmail;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Log;
 class TaskCompletedNotification implements ShouldQueue
 {
     /**
@@ -21,10 +21,10 @@ class TaskCompletedNotification implements ShouldQueue
      */
     public function handle(TaskCompleted $event): void
     {
+        Log::debug('Job started');
         $task = $event->task;
-        $firstname = $task->user->firstname;
-        $task_name = $task->task->name;
-        $email = Auth::email();
-        Mail::to($email)->send(new TaskCompletedEmail($firstname, $task_name));
+        $task_name = $task->name;
+        $email = ('getter@gmail.com'); ////scha ya pridumay kak poluchit email
+        Mail::to($email)->send(new TaskCompletedEmail($task_name));
     }
 }
