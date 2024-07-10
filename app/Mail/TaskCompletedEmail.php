@@ -17,7 +17,7 @@ class TaskCompletedEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private $taskName)
+    public function __construct(private $first_name)
     {
         //
     }
@@ -40,7 +40,7 @@ class TaskCompletedEmail extends Mailable
     {
         return new Content(
             view: 'mail.taskCompleted',
-            with: ['taskName'=>$this->taskName],
+            ///with: ['firstname'=>$this->first_name],
 
         );
     }

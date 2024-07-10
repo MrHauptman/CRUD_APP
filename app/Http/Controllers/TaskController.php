@@ -12,7 +12,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Queue\DatabaseQueue;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -101,9 +101,12 @@ class TaskController extends Controller
   public function complete($id) {
     $task = Task::find($id);
     $this->taskService->completeTask($task);
-    event(new TaskCompleted($task));
-
+    $user = Auth::user();
+    event(new TaskCompleted($task,$user));
+    
     $job = new DeleteCompletedTask($task);
+    
+    ///dd($email);
     ///dd($job); 
   //   $connection = DB::connection();
   //   $queue  = new DatabaseQueue($connection, 'default');

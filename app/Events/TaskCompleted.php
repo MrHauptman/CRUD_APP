@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -15,12 +16,15 @@ class TaskCompleted
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $task;
+    public $user;
     /**
      * Create a new event instance.
      */
-    public function __construct($task)
+    public function __construct($task, User $user)
     {
         $this->task = $task;
+        $this->user = $user;
+        
         
     }
 }
